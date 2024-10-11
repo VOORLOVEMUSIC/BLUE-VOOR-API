@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+import os
 
 app = Flask(__name__)
 
@@ -14,4 +15,5 @@ def execute_script():
     return jsonify({"status": "success", "message": f"Executed script: {script}"})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Run the app on the specified host and port
+    app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)), debug=True)
